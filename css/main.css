@@ -385,7 +385,7 @@ Non home page that is active
 */
 @media screen and (max-width: 1440px) {
   [data-target=home].page .inner-container {
-    width: 400px !important;
+    width: 400px;
   }
   [data-target=home].page:not(.active) {
     transform: translateX(-28vw);
@@ -406,6 +406,7 @@ Non home page that is active
   }
   .page.active:not([data-target=home]) {
     transform: translateX(0px);
+    margin-left: 0px;
   }
   [data-target=home].page:not(.active) {
     transform: translateX(-200vw);
@@ -418,8 +419,14 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 696px) {
-  .inner-container {
-    width: 400px !important;
+  .page:not([data-target=home]) .inner-container,
+  .mobile-header {
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 400px;
+  }
+  [data-target=home].page:not(.active) ~ .mobile-header {
+    transform: translateY(0px);
   }
   body {
     font-size: 10pt;
@@ -429,8 +436,11 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 480px) {
-  .inner-container {
-    width: 300px !important;
+  [data-target=home].page .inner-container,
+  .page:not([data-target=home]) .inner-container,
+  .mobile-header {
+    width: 330px;
+    margin-left: 30px;
   }
   .card {
     font-size: 0.8em;
@@ -438,9 +448,6 @@ Non home page that is active
   .name {
     font-size: 2.5em;
     font-family: "Roboto Condensed", sans-serif;
-  }
-  .mobile-header {
-    margin-left: 30px;
   }
   .mobile-header .button-group {
     justify-content: flex-start;
@@ -450,9 +457,11 @@ Non home page that is active
     width: 70px;
   }
 }
-@media screen and (max-width: 375px) {
-  .inner-container {
-    width: 250px !important;
+@media screen and (max-width: 395px) {
+  [data-target=home].page .inner-container,
+  .page:not([data-target=home]) .inner-container,
+  .mobile-header {
+    width: 280px;
   }
   .card {
     font-size: 0.8em;
@@ -460,6 +469,16 @@ Non home page that is active
   .name {
     font-size: 2rem;
     font-family: "Roboto Condensed", sans-serif;
+  }
+}
+@media screen and (max-width: 320px) {
+  [data-target=home].page .inner-container,
+  .page:not([data-target=home]) .inner-container,
+  .mobile-header {
+    width: 220px;
+  }
+  .page.page:not([data-target=home]) {
+    top: 300px;
   }
 }
 
