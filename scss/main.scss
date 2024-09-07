@@ -418,20 +418,11 @@ Non home page that is active
 */
 
 @media screen and (max-width:1440px){
-    // .inner-container{
-    //     width:400px !important;
-    // }
     [data-target="home"].page .inner-container{
-        width:400px !important;
+        width:400px;
     }
-    // .page.active:not([data-target="home"]){
-    //     transform:translateX(0px)
-    // }
     [data-target="home"].page:not(.active){
         transform:translateX(calc((28vw)*(-1)));
-        // .inner-container{
-        //     width:400px !important;
-        // }
     }
     .page.active:not([data-target="home"]){
         transform:translateX(200px)
@@ -453,6 +444,7 @@ Non home page that is active
     }
     .page.active:not([data-target="home"]){
         transform:translateX(0px);
+        margin-left:0px;
     }
     [data-target="home"].page:not(.active){
         transform:translateX(calc((200vw)*(-1)));
@@ -469,8 +461,14 @@ Non home page that is active
 
 
 @media screen and (max-width:696px){
-    .inner-container{
-        width:400px !important;
+    .page:not([data-target="home"]) .inner-container,
+    .mobile-header {
+        margin-left:0px;
+        margin-right:0px;
+        width:400px;
+    }
+    [data-target="home"].page:not(.active) ~ .mobile-header{
+        transform: translateY(0px)
     }
     body{
         font-size:10pt;
@@ -482,8 +480,11 @@ Non home page that is active
 }
 
 @media screen and (max-width: 480px) {
-    .inner-container{
-        width:300px !important;
+    [data-target="home"].page .inner-container,
+    .page:not([data-target="home"]) .inner-container,
+    .mobile-header {
+        width:330px;
+        margin-left:30px;
     }
     .card{
         font-size:0.8em;
@@ -493,9 +494,7 @@ Non home page that is active
         font-family: $font-family-title;
     }
     .mobile-header{
-        margin-left:30px;
         .button-group{
-            // margin: 20px 20px;
             justify-content: flex-start;
             gap:15px;
             .button{
@@ -506,9 +505,11 @@ Non home page that is active
 }
 
 
-@media screen and (max-width: 375px) {
-    .inner-container{
-        width:250px !important;
+@media screen and (max-width: 395px) {
+    [data-target="home"].page .inner-container,
+    .page:not([data-target="home"]) .inner-container,
+    .mobile-header {
+        width:280px;
     }
     .card{
         font-size:0.8em;
@@ -517,7 +518,18 @@ Non home page that is active
         font-size:2.0rem;
         font-family: $font-family-title;
     }
+}
 
+@media screen and (max-width: 320px) {
+
+    [data-target="home"].page .inner-container,
+    .page:not([data-target="home"]) .inner-container,
+    .mobile-header {
+        width:220px;
+    }
+    .page.page:not([data-target="home"]){
+        top:300px;
+    }
 }
 
 
