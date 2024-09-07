@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="button-group">
+        <div class="button-container" id="dark-mode-toggle-group">
+          <div id="dark-mode-toggle" class="toggle button big-font">
+            <i class="fas fa-sun"></i>
+          </div>
+          <div class="toggle-brick"></div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="notification">Copied!</div>
+
+      <div data-target="home" class="page">
+        <div class="inner-container">
+          <div class="name">Brian Bollen, Ph.D.</div>
+          <div class="icons">
+            <div class="icon-container">
+              <div class="content">
+                <a target="_blank" href="https://github.com/bbollen23">
+                  <i class="fab fa-github"></i>
+                  <span>bbollen23</span>
+                </a>
+              </div>
+              <div class="line"></div>
+            </div>
+            <div class="icon-container">
+              <div class="content">
+                <a
+                  target="_blank"
+                  href="https://www.linkedin.com/in/brian-bollen-ph-d-a3123484"
+                >
+                  <i class="fab fa-linkedin"></i>
+                  <span>Brian Bollen, Ph.D.</span>
+                </a>
+              </div>
+              <div class="line"></div>
+            </div>
+            <div class="additional-icon-wrapper">
+              <div class="icon-container">
+                <div class="content">
+                  <a href="mailto:briancbollen@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>briancbollen@gmail.com</span>
+                  </a>
+                </div>
+                <div class="line"></div>
+              </div>
+              <i
+                class="fas fa-copy copy-button"
+                onclick="copy('briancbollen@gmail.com')"
+              ></i>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-page-card="projects"
+            onclick="navigateTo('projects')"
+          >
+            <div class="title-container">
+              <div class="title">Projects</div>
+              <div class="line"></div>
+            </div>
+            <p>
+              I've had the luxury of working on a number of projects ranging
+              from a visualization design platform, a cell microscopy
+              visualization tool, and more personal projects. Most of my
+              software development experience is in Javascript and Python. I
+              focus mainly on single page web applications with React.js
+              front-ends and use Django as my go-to back-end server.
+            </p>
+            <div class="footer">
+              <div class="read-more content">
+                <div>Read More</div>
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="read-less content">
+                <i class="fas fa-arrow-left"></i>
+                <div>Read Less</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="card"
+            data-page-card="research"
+            onclick="navigateTo('research')"
+          >
+            <div class="title-container">
+              <div class="title">Research</div>
+              <div class="line"></div>
+            </div>
+            <p>
+              My published research focuses on the intersection of mathematics
+              and exploratory data analysis. More specifically, I worked in he
+              field of Topological Data Analysis (TDA) where I studied metrics
+              between Reeb graphs and merge trees.
+            </p>
+            <div class="footer">
+              <div class="read-more content">
+                <div>Read More</div>
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="read-less content">
+                <i class="fas fa-arrow-left"></i>
+                <div>Read Less</div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+            data-page-card="about"
+            onclick="navigateTo('about')"
+          >
+            <div class="title-container">
+              <div class="title">About</div>
+              <div class="line"></div>
+            </div>
+            <p>
+              I am currently a Senior Software Engineer at the Scientific
+              Computing and Imaging institute at the University of Utah in the
+              Visualization Design Lab. I received my Ph.D. in Applied
+              Mathematics at the University of Arizona.
+            </p>
+            <div class="footer">
+              <div class="read-more content">
+                <div>Read More</div>
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="read-less content">
+                <i class="fas fa-arrow-left"></i>
+                <div>Read Less</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-header">
+        <div class="name">Brian Bollen, Ph.D.</div>
+        <div class="icons">
+          <div class="icon-container">
+            <div class="content">
+              <a target="_blank" href="https://github.com/bbollen23">
+                <i class="fab fa-github"></i>
+                <span>bbollen23</span>
+              </a>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="icon-container">
+            <div class="content">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/brian-bollen-ph-d-a3123484"
+              >
+                <i class="fab fa-linkedin"></i>
+                <span>Brian Bollen, Ph.D.</span>
+              </a>
+            </div>
+            <div class="line"></div>
+          </div>
+          <div class="additional-icon-wrapper">
+            <div class="icon-container">
+              <div class="content">
+                <a href="mailto:briancbollen@gmail.com">
+                  <i class="fas fa-envelope"></i>
+                  <span>briancbollen@gmail.com</span>
+                </a>
+              </div>
+              <div class="line"></div>
+            </div>
+            <i
+              class="fas fa-copy copy-button"
+              onclick="copy('briancbollen@gmail.com')"
+            ></i>
+          </div>
+        </div>
+        <div class="button-group">
+          <div class="button big-font" onclick="navigateTo('projects')">
+            Projects
+          </div>
+          <div class="button big-font" onclick="navigateTo('research')">
+            Research
+          </div>
+          <div class="button big-font" onclick="navigateTo('about')">About</div>
+        </div>
+      </div>
+      <div data-target="projects" class="page">
+        <div class="inner-container">
+          <div class="name">Projects</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+        </div>
+      </div>
+      <div data-target="research" class="page">
+        <div class="inner-container">
+          <div class="name">Research</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+        </div>
+      </div>
+      <div data-target="about" class="page">
+        <div class="inner-container">
+          <div class="name">About</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+</html>
