@@ -35,6 +35,10 @@ body{
     font-size:12pt;
 }
 
+
+h1{
+    margin-bottom:0;
+}
 body{
     font-family: $font-family-text;
     font-optical-sizing: auto;
@@ -268,9 +272,6 @@ body{
         .line{
             animation: growLine 0.5s ease-out forwards;
         }
-        // .footer .content{
-        //     transform:translateY(-10px);
-        // }
     }
     .title-container{
         display:inline-block;
@@ -474,7 +475,23 @@ Non home page that is active
     }
     .card .footer .content.read-more{
         left:68px;
+        transform: translateY(-10px);
     }
+    // .footer {
+    //     .content{
+    //         position: relative;
+    //         transform: translateY(10px);
+    //         transition: 0.25s ease-out;
+    //         flex-direction: row;
+    //         display: flex;
+    //         gap:10px;
+    //         i{
+    //             margin-top:2px;
+    //         }
+    //         &.read-more{
+    //             left:110px;
+    //         }
+    //     }
 
 }
 
