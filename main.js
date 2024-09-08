@@ -148,19 +148,41 @@ toggleGroup.addEventListener("click", () => {
 });
 
 const buttons = document.querySelectorAll(".nav-button");
+const cards = document.querySelectorAll('.card')
 
 // Loop through each button and attach the event listener
 buttons.forEach(button => {
 	button.addEventListener("mousedown", () => {
 		button.classList.add('pressed')
 	});
-});
-buttons.forEach(button => {
 	button.addEventListener("mouseup", () => {
+		button.classList.remove('pressed')
+	});
+	button.addEventListener("mouseleave", () => {
+		button.classList.remove('pressed')
+	});
+	button.addEventListener("touchstart", () => {
+		button.classList.add('pressed')
+	});
+	button.addEventListener("touchend", () => {
+		button.classList.remove('pressed')
+	});
+	button.addEventListener("touchcancel", () => {
 		button.classList.remove('pressed')
 	});
 });
 
+cards.forEach(card => {
+	card.addEventListener("touchstart", () => {
+		card.classList.add('pressed')
+	});
+	card.addEventListener("touchend", () => {
+		card.classList.remove('pressed')
+	});
+	card.addEventListener("touchcancel", () => {
+		card.classList.remove('pressed')
+	});
+});
 
   
   // Apply user preference on initial load
