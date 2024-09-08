@@ -78,6 +78,20 @@ body{
     .button-group{
         margin-top:20px;
         z-index:10;
+        pointer-events:none;
+        .button{
+            transform:translate(0,0);
+            transition: transform 0.1s ease-in;
+            pointer-events:all;
+            &.clicked{
+                transform: translate(2px,2px);
+                box-shadow:none;
+            }
+            &.pressed {
+                transform: translate(2px,2px);
+                box-shadow:none;
+            }
+        }
     }
 }
 
@@ -104,21 +118,21 @@ body{
         transform: translateX(0); /* Move on-screen */
         opacity: 1; /* Make visible */
         z-index:2;
-        &:not([data-target="home"]){
+        &:not([data-page-target="home"]){
             transform:translateX(300px)
         }
     }
-    &:not([data-target="home"]){
+    &:not([data-page-target="home"]){
         .name{
             margin-bottom:27px;
         }
     }
 }
-.page:not([data-target="home"]){
+.page:not([data-page-target="home"]){
     transition-delay:0.2s;
 }
 
-[data-target="home"].page:not(.active){
+[data-page-target="home"].page:not(.active){
     transform:translateX(calc((20vw)*(-1)));
     display:grid;
     opacity:1;
@@ -133,7 +147,7 @@ body{
     width:600px;
 }
 
-:not([data-target="home"]) > .inner-container{
+:not([data-page-target="home"]) > .inner-container{
     width:500px;
 }
 
@@ -147,6 +161,7 @@ body{
     justify-content: space-between;
     width:auto;
     gap:20px;
+    -webkit-tap-highlight-color: transparent;
     .button-container{
         display:flex;
         gap:0px;
@@ -272,6 +287,23 @@ body{
         .line{
             animation: growLine 0.5s ease-out forwards;
         }
+        .footer{
+            .content{
+                &.read-more{
+                    transform: translateY(10px);
+                }
+                &.read-less{
+                    transform:translateY(-10px);
+                }
+            }
+        }
+    }
+    &:not(.static-hover):hover{
+        transform: translate(20px, -5px);
+        cursor: pointer;
+        .line{
+            animation: growLine 0.5s ease-out forwards;
+        }
     }
     .title-container{
         display:inline-block;
@@ -296,20 +328,29 @@ body{
         position: relative;
         .content{
             position: relative;
-            transform: translateY(10px);
             transition: 0.25s ease-out;
             flex-direction: row;
             display: flex;
             gap:10px;
+            &
             i{
                 margin-top:2px;
             }
             &.read-more{
                 left:110px;
+                transform:translateY(-10px);
             }
+            &.read-less{
+                transform: translateY(10px);
+
+            }
+
         }
     }
 }
+
+
+
 
 .card::before{
     content: '';
@@ -340,20 +381,9 @@ body{
 
 
 
-.card:not(.static-hover):hover{
-    transform: translate(20px, -5px);
-    cursor: pointer;
-    .line{
-        animation: growLine 0.5s ease-out forwards;
-    }
-    .footer .read-more.content{
-        transform:translateY(-10px);
-    }
-}
 
-.card.static-hover:hover .footer .read-less.content{
-    transform:translateY(-10px);
-}
+
+
 
 
 
@@ -389,16 +419,17 @@ body{
     background-color: rgb(0,0,0,0.75);
     color:white;
     text-align: center;
-    z-index:20;
     align-items: center;
     justify-content: center;
     display:flex;
     opacity:0;
     transform: translateY(10px); /* Adjust the starting position if needed */
     transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    pointer-events:none;
+    z-index:20;
     &.visible{
         opacity:1;
-        transform:translateY(0px)
+        transform:translateY(0px);
     }
 }
 
@@ -408,29 +439,29 @@ KEY
 
 Home page when not active:
 
-[data-target="home"].page:not(.active)
+[data-page-target="home"].page:not(.active)
 
 Non home page that is active
 
-.page.active:not([data-target="home"])
+.page.active:not([data-page-target="home"])
 
 
 */
 
 @media screen and (max-width:1440px){
-    [data-target="home"].page .inner-container{
+    [data-page-target="home"].page .inner-container{
         width:400px;
     }
-    [data-target="home"].page:not(.active){
+    [data-page-target="home"].page:not(.active){
         transform:translateX(calc((28vw)*(-1)));
     }
-    .page.active:not([data-target="home"]){
+    .page.active:not([data-page-target="home"]){
         transform:translateX(200px)
     }
     .icons{
         flex-wrap: wrap;
     }
-    .page:not([data-target="home"]){
+    .page:not([data-page-target="home"]){
         .name{
             margin-bottom:68px;
         }
@@ -439,35 +470,43 @@ Non home page that is active
 
 
 @media screen and (max-width:1024px){
-    .page:not([data-target="home"]){
+    .page:not([data-page-target="home"]){
         top:200px;
     }
-    .page.active:not([data-target="home"]){
+    .page.active:not([data-page-target="home"]){
         transform:translateX(0px);
         margin-left:0px;
     }
-    [data-target="home"].page:not(.active){
+    [data-page-target="home"].page:not(.active){
         transform:translateX(calc((200vw)*(-1)));
     }
-    [data-target="home"].page:not(.active) ~ .mobile-header{
+    [data-page-target="home"].page:not(.active) ~ .mobile-header{
         transform: translateY(0px)
     }
-    .page:not([data-target="home"]){
+    .page:not([data-page-target="home"]){
         .name{
             margin-bottom:0px;
+        }
+    }
+    .card.static-hover,
+    .card:not(static-hover):hover{
+        transform: translate(0px, 0px) !important;
+        cursor: pointer;
+        .line{
+            opacity:0;
         }
     }
 }
 
 
 @media screen and (max-width:696px){
-    .page:not([data-target="home"]) .inner-container,
+    .page:not([data-page-target="home"]) .inner-container,
     .mobile-header {
         margin-left:0px;
         margin-right:0px;
         width:400px;
     }
-    [data-target="home"].page:not(.active) ~ .mobile-header{
+    [data-page-target="home"].page:not(.active) ~ .mobile-header{
         transform: translateY(0px)
     }
     body{
@@ -480,8 +519,8 @@ Non home page that is active
 }
 
 @media screen and (max-width: 480px) {
-    [data-target="home"].page .inner-container,
-    .page:not([data-target="home"]) .inner-container,
+    [data-page-target="home"].page .inner-container,
+    .page:not([data-page-target="home"]) .inner-container,
     .mobile-header {
         width:330px;
         margin-left:30px;
@@ -506,8 +545,8 @@ Non home page that is active
 
 
 @media screen and (max-width: 395px) {
-    [data-target="home"].page .inner-container,
-    .page:not([data-target="home"]) .inner-container,
+    [data-page-target="home"].page .inner-container,
+    .page:not([data-page-target="home"]) .inner-container,
     .mobile-header {
         width:280px;
     }
@@ -522,12 +561,12 @@ Non home page that is active
 
 @media screen and (max-width: 320px) {
 
-    [data-target="home"].page .inner-container,
-    .page:not([data-target="home"]) .inner-container,
+    [data-page-target="home"].page .inner-container,
+    .page:not([data-page-target="home"]) .inner-container,
     .mobile-header {
         width:220px;
     }
-    .page.page:not([data-target="home"]){
+    .page.page:not([data-page-target="home"]){
         top:300px;
     }
 }

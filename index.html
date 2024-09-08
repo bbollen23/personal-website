@@ -29,7 +29,7 @@
     <div class="container">
       <div id="notification">Copied!</div>
 
-      <div data-target="home" class="page">
+      <div data-page-target="home" class="page">
         <div class="inner-container">
           <div class="name">Brian Bollen, Ph.D.</div>
           <div class="icons">
@@ -72,7 +72,7 @@
           </div>
           <div
             class="card"
-            data-page-card="projects"
+            data-page-target="projects"
             onclick="navigateTo('projects')"
           >
             <div class="title-container">
@@ -101,7 +101,7 @@
 
           <div
             class="card"
-            data-page-card="research"
+            data-page-target="research"
             onclick="navigateTo('research')"
           >
             <div class="title-container">
@@ -127,7 +127,7 @@
           </div>
           <div
             class="card"
-            data-page-card="about"
+            data-page-target="about"
             onclick="navigateTo('about')"
           >
             <div class="title-container">
@@ -194,16 +194,30 @@
           </div>
         </div>
         <div class="button-group">
-          <div class="button big-font" onclick="navigateTo('projects')">
+          <div
+            class="nav-button button big-font"
+            data-page-target="projects"
+            onclick="navigateTo('projects')"
+          >
             Projects
           </div>
-          <div class="button big-font" onclick="navigateTo('research')">
+          <div
+            class="nav-button button big-font"
+            data-page-target="research"
+            onclick="navigateTo('research')"
+          >
             Research
           </div>
-          <div class="button big-font" onclick="navigateTo('about')">About</div>
+          <div
+            class="nav-button button big-font"
+            data-page-target="about"
+            onclick="navigateTo('about')"
+          >
+            About
+          </div>
         </div>
       </div>
-      <div data-target="projects" class="page">
+      <div data-page-target="projects" class="page">
         <div class="inner-container">
           <div class="name">Projects</div>
           <p>
@@ -232,7 +246,7 @@
           </p>
         </div>
       </div>
-      <div data-target="research" class="page">
+      <div data-page-target="research" class="page">
         <div class="inner-container">
           <div class="name">Research</div>
           <p>
@@ -261,7 +275,7 @@
           </p>
         </div>
       </div>
-      <div data-target="about" class="page">
+      <div data-page-target="about" class="page">
         <div class="inner-container">
           <div class="name">About</div>
           <p>
