@@ -274,13 +274,17 @@ body{
 .card {
     border: 3px solid var(--card-border-color);
     padding: 20px;
-    box-shadow: 2px 2px 0px var(--card-border-color);
+    box-shadow: 4px 4px 0px var(--card-border-color);
     width:100%;
     position: relative;
     background-color:var(--card-background-color);
     transition:0.25s ease-out;
     margin-bottom:10px;
     box-sizing: border-box;
+    &.pressed{
+        box-shadow:none;
+        transform:translate(4px,4px);
+    }
     &.static-hover{
         transform: translate(20px, -5px);
         cursor: pointer;
@@ -358,14 +362,19 @@ body{
     top: 5px;
     right: 1px;
     width: 25px;
-    height: 20px;
+    height: 17px;
     border-bottom: 3px solid var(--card-border-color);
     transform: translate(100%, -100%) rotate(45deg);
     transform-origin: top left;
     z-index: 1;
     background-color:var(--background-color);
+    &.pressed{
+        width:20px;
+    }
 }
-
+.card.pressed:before{
+    width:20px;
+}
 .card::after {
     content: '';
     position: absolute;
@@ -376,7 +385,9 @@ body{
     background-color: var(--card-background-color); /* Match the card's background */
     z-index: 1; /* Place this below the arrow */
     pointer-events: none; /* Ensure it doesn't interfere with interactions */
+
 }
+
 
 
 
@@ -488,9 +499,9 @@ Non home page that is active
             margin-bottom:0px;
         }
     }
-    .card.static-hover,
-    .card:not(static-hover):hover{
-        transform: translate(0px, 0px) !important;
+    .page .card.static-hover,
+    .page .card:not(static-hover):hover{
+        transform: initial;
         cursor: pointer;
         .line{
             opacity:0;
