@@ -255,6 +255,19 @@ body {
 .card.static-hover .line {
   animation: growLine 0.5s ease-out forwards;
 }
+.card.static-hover .footer .content.read-more {
+  transform: translateY(10px);
+}
+.card.static-hover .footer .content.read-less {
+  transform: translateY(-10px);
+}
+.card:not(.static-hover):hover {
+  transform: translate(20px, -5px);
+  cursor: pointer;
+}
+.card:not(.static-hover):hover .line {
+  animation: growLine 0.5s ease-out forwards;
+}
 .card .title-container {
   display: inline-block;
   width: auto;
@@ -279,7 +292,6 @@ body {
 }
 .card .footer .content {
   position: relative;
-  transform: translateY(10px);
   transition: 0.25s ease-out;
   flex-direction: row;
   display: flex;
@@ -290,6 +302,10 @@ body {
 }
 .card .footer .content.read-more {
   left: 110px;
+  transform: translateY(-10px);
+}
+.card .footer .content.read-less {
+  transform: translateY(10px);
 }
 
 .card::before {
@@ -316,21 +332,6 @@ body {
   background-color: var(--card-background-color); /* Match the card's background */
   z-index: 1; /* Place this below the arrow */
   pointer-events: none; /* Ensure it doesn't interfere with interactions */
-}
-
-.card:not(.static-hover):hover {
-  transform: translate(20px, -5px);
-  cursor: pointer;
-}
-.card:not(.static-hover):hover .line {
-  animation: growLine 0.5s ease-out forwards;
-}
-.card:not(.static-hover):hover .footer .read-more.content {
-  transform: translateY(-10px);
-}
-
-.card.static-hover:hover .footer .read-less.content {
-  transform: translateY(-10px);
 }
 
 .line {
