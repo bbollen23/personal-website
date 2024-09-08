@@ -74,6 +74,20 @@ body {
 .mobile-header .button-group {
   margin-top: 20px;
   z-index: 10;
+  pointer-events: none;
+}
+.mobile-header .button-group .button {
+  transform: translate(0, 0);
+  transition: transform 0.1s ease-in;
+  pointer-events: all;
+}
+.mobile-header .button-group .button.clicked {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.mobile-header .button-group .button.pressed {
+  transform: translate(2px, 2px);
+  box-shadow: none;
 }
 
 .container {
@@ -101,18 +115,18 @@ body {
   opacity: 1; /* Make visible */
   z-index: 2;
 }
-.page.active:not([data-target=home]) {
+.page.active:not([data-page-target=home]) {
   transform: translateX(300px);
 }
-.page:not([data-target=home]) .name {
+.page:not([data-page-target=home]) .name {
   margin-bottom: 27px;
 }
 
-.page:not([data-target=home]) {
+.page:not([data-page-target=home]) {
   transition-delay: 0.2s;
 }
 
-[data-target=home].page:not(.active) {
+[data-page-target=home].page:not(.active) {
   transform: translateX(-20vw);
   display: grid;
   opacity: 1;
@@ -127,7 +141,7 @@ body {
   width: 600px;
 }
 
-:not([data-target=home]) > .inner-container {
+:not([data-page-target=home]) > .inner-container {
   width: 500px;
 }
 
@@ -137,6 +151,7 @@ body {
   justify-content: space-between;
   width: auto;
   gap: 20px;
+  -webkit-tap-highlight-color: transparent;
 }
 .button-group .button-container {
   display: flex;
@@ -361,13 +376,14 @@ body {
   background-color: rgba(0, 0, 0, 0.75);
   color: white;
   text-align: center;
-  z-index: 20;
   align-items: center;
   justify-content: center;
   display: flex;
   opacity: 0;
   transform: translateY(10px); /* Adjust the starting position if needed */
   transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 20;
 }
 #notification.visible {
   opacity: 1;
@@ -380,57 +396,57 @@ KEY
 
 Home page when not active:
 
-[data-target="home"].page:not(.active)
+[data-page-target="home"].page:not(.active)
 
 Non home page that is active
 
-.page.active:not([data-target="home"])
+.page.active:not([data-page-target="home"])
 
 
 */
 @media screen and (max-width: 1440px) {
-  [data-target=home].page .inner-container {
+  [data-page-target=home].page .inner-container {
     width: 400px;
   }
-  [data-target=home].page:not(.active) {
+  [data-page-target=home].page:not(.active) {
     transform: translateX(-28vw);
   }
-  .page.active:not([data-target=home]) {
+  .page.active:not([data-page-target=home]) {
     transform: translateX(200px);
   }
   .icons {
     flex-wrap: wrap;
   }
-  .page:not([data-target=home]) .name {
+  .page:not([data-page-target=home]) .name {
     margin-bottom: 68px;
   }
 }
 @media screen and (max-width: 1024px) {
-  .page:not([data-target=home]) {
+  .page:not([data-page-target=home]) {
     top: 200px;
   }
-  .page.active:not([data-target=home]) {
+  .page.active:not([data-page-target=home]) {
     transform: translateX(0px);
     margin-left: 0px;
   }
-  [data-target=home].page:not(.active) {
+  [data-page-target=home].page:not(.active) {
     transform: translateX(-200vw);
   }
-  [data-target=home].page:not(.active) ~ .mobile-header {
+  [data-page-target=home].page:not(.active) ~ .mobile-header {
     transform: translateY(0px);
   }
-  .page:not([data-target=home]) .name {
+  .page:not([data-page-target=home]) .name {
     margin-bottom: 0px;
   }
 }
 @media screen and (max-width: 696px) {
-  .page:not([data-target=home]) .inner-container,
+  .page:not([data-page-target=home]) .inner-container,
   .mobile-header {
     margin-left: 0px;
     margin-right: 0px;
     width: 400px;
   }
-  [data-target=home].page:not(.active) ~ .mobile-header {
+  [data-page-target=home].page:not(.active) ~ .mobile-header {
     transform: translateY(0px);
   }
   body {
@@ -442,8 +458,8 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 480px) {
-  [data-target=home].page .inner-container,
-  .page:not([data-target=home]) .inner-container,
+  [data-page-target=home].page .inner-container,
+  .page:not([data-page-target=home]) .inner-container,
   .mobile-header {
     width: 330px;
     margin-left: 30px;
@@ -464,8 +480,8 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 395px) {
-  [data-target=home].page .inner-container,
-  .page:not([data-target=home]) .inner-container,
+  [data-page-target=home].page .inner-container,
+  .page:not([data-page-target=home]) .inner-container,
   .mobile-header {
     width: 280px;
   }
@@ -478,12 +494,12 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 320px) {
-  [data-target=home].page .inner-container,
-  .page:not([data-target=home]) .inner-container,
+  [data-page-target=home].page .inner-container,
+  .page:not([data-page-target=home]) .inner-container,
   .mobile-header {
     width: 220px;
   }
-  .page.page:not([data-target=home]) {
+  .page.page:not([data-page-target=home]) {
     top: 300px;
   }
 }

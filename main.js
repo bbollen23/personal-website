@@ -31,6 +31,7 @@ function showPage() {
 	var hash = window.location.hash.substring(1) || 'home';
 	var pages = document.querySelectorAll('.page');
 	var cards = document.querySelectorAll('.card');
+	var buttons = document.querySelectorAll('.nav-button');
 
 	// Add transition delays
 
@@ -39,11 +40,11 @@ function showPage() {
 
 	var activePage = document.querySelector('.page.active');
 	var mobileHeader = document.querySelector('.mobile-header');
-	var home = document.querySelector('[data-target="home"]');
-    var selectedPage = document.querySelector(`.page[data-target="${hash}"]`);
-	var cardClicked = document.querySelector(`.card[data-page-card="${hash}"]`);
+	var home = document.querySelector('[data-page-target="home"]');
+    var selectedPage = document.querySelector(`.page[data-page-target="${hash}"]`);
+	var cardClicked = document.querySelector(`.card[data-page-target="${hash}"]`);
+	var buttonClicked = document.querySelector(`.button[data-page-target="${hash}"]`)
 
-	// console.log('i am here')
 
 	// Remove all delays
 	const delays = ['delay-1','delay-2','delay-3']
@@ -56,26 +57,21 @@ function showPage() {
 		mobileHeader.classList.remove(delay);
 	})
 
-	if(activePage && activePage.getAttribute('data-target') !== 'home' && hash === 'home'){
-		console.log(activePage)
-		console.log('got here')
+	if(activePage && activePage.getAttribute('data-page-target') !== 'home' && hash === 'home'){
 		if(activePage){
-			console.log('am i here?')
 			activePage.classList.add('delay-1');
 			mobileHeader.classList.add('delay-1')
 			home.classList.add('delay-2')
 		}
 	} 
-	else if (activePage && activePage.getAttribute('data-target') === 'home') {
+	else if (activePage && activePage.getAttribute('data-page-target') === 'home') {
 		if(activePage){
-			console.log('woah')
 			home.classList.add('delay-1')
 			selectedPage.classList.add('delay-2');
 			mobileHeader.classList.add('delay-2');
 		}
-	} else if (activePage && activePage.getAttribute('data-target') !== 'home' && hash !== 'home') {
+	} else if (activePage && activePage.getAttribute('data-page-target') !== 'home' && hash !== 'home') {
 		if(activePage){
-			console.log('huzzah!')
 			activePage.classList.add('delay-1');
 			selectedPage.classList.add('delay-3')
 		}
@@ -90,6 +86,10 @@ function showPage() {
 		card.classList.remove('static-hover')
 	});
 
+	buttons.forEach(button => {
+		button.classList.remove('clicked')
+	})	
+
 	// Show the selected page
 
     if (selectedPage) {
@@ -97,13 +97,19 @@ function showPage() {
 		if(cardClicked){
 			cardClicked.classList.add('static-hover');
 		}
+		if(buttonClicked){
+			buttonClicked.classList.add('clicked')
+			console.log('added')
+		}
     }
 }
 
+
 function navigateTo(pageId) {
+	console.log(pageId);
 	// Set the hash in the URL
-    var selectedPage = document.querySelector(`.page[data-target="${pageId}"]`);
-	var cardClicked = document.querySelector(`.card[data-page-card="${pageId}"]`);
+    var selectedPage = document.querySelector(`.page[data-page-target="${pageId}"]`);
+	var cardClicked = document.querySelector(`.card[data-page-target="${pageId}"]`);
 
 	if(selectedPage.classList.contains('active')){
 		window.location.hash = "home"
@@ -113,6 +119,8 @@ function navigateTo(pageId) {
 		cardClicked.classList.add('static-hover')
 	}
 }
+
+
 
 // Add an event listener for hash changes
 window.addEventListener('hashchange', showPage);
@@ -139,22 +147,23 @@ toggleGroup.addEventListener("click", () => {
 
 });
 
-function applyUserPreference() {
-	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  
-	if (prefersDarkScheme) {
-	  htmlElement.classList.add("dark-mode");
-	  toggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
-		toggleButton.classList.add('switched')
-	} else {
-	  htmlElement.classList.remove("dark-mode");
-	  toggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
+const buttons = document.querySelectorAll(".nav-button");
 
-	}
-  }
+// Loop through each button and attach the event listener
+buttons.forEach(button => {
+	button.addEventListener("mousedown", () => {
+		button.classList.add('pressed')
+	});
+});
+buttons.forEach(button => {
+	button.addEventListener("mouseup", () => {
+		button.classList.remove('pressed')
+	});
+});
+
+
   
   // Apply user preference on initial load
-  applyUserPreference();
 
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -173,3 +182,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+
+function applyUserPreference() {
+	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  
+	if (prefersDarkScheme) {
+	  htmlElement.classList.add("dark-mode");
+	  toggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
+		toggleButton.classList.add('switched')
+	} else {
+	  htmlElement.classList.remove("dark-mode");
+	  toggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
+
+	}
+}
+
+applyUserPreference();
