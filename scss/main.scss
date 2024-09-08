@@ -368,13 +368,30 @@ body{
     transform-origin: top left;
     z-index: 1;
     background-color:var(--background-color);
-    &.pressed{
-        width:20px;
-    }
 }
-.card.pressed:before{
-    width:20px;
+// .card.pressed:before{
+//     width:20px;
+// }
+
+.card div.title-container:after{
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 10px;
+    top: 10px;
+    right: -20px;
+    z-index: 30;
+    // background-color:red;
+    background-color:var(--background-color);
+    transform:translateX(0px);
+    transition: transform 0.125s ease-out;
 }
+
+.card.pressed div.title-container:after{
+    transform:translateX(-6.5px);
+}
+
+
 .card::after {
     content: '';
     position: absolute;
