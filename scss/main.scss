@@ -488,6 +488,14 @@ Non home page that is active
             margin-bottom:0px;
         }
     }
+    .card.static-hover,
+    .card:not(static-hover):hover{
+        transform: translate(0px, 0px) !important;
+        cursor: pointer;
+        .line{
+            opacity:0;
+        }
+    }
 }
 
 

@@ -438,6 +438,15 @@ Non home page that is active
   .page:not([data-page-target=home]) .name {
     margin-bottom: 0px;
   }
+  .card.static-hover,
+  .card:not(static-hover):hover {
+    transform: translate(0px, 0px) !important;
+    cursor: pointer;
+  }
+  .card.static-hover .line,
+  .card:not(static-hover):hover .line {
+    opacity: 0;
+  }
 }
 @media screen and (max-width: 696px) {
   .page:not([data-page-target=home]) .inner-container,
