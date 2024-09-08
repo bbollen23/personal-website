@@ -450,12 +450,19 @@ Non home page that is active
     margin-bottom: 0px;
   }
   .page .card.static-hover,
-  .page .card:not(static-hover):hover {
-    transform: initial;
+  .page .card:not(static-hover):not(.pressed):hover {
+    transform: none;
     cursor: pointer;
   }
   .page .card.static-hover .line,
-  .page .card:not(static-hover):hover .line {
+  .page .card:not(static-hover):not(.pressed):hover .line {
+    opacity: 0;
+  }
+  .page .card.pressed:not(static-hover):hover {
+    transform: translate(4px, 4px);
+    cursor: pointer;
+  }
+  .page .card.pressed:not(static-hover):hover .line {
     opacity: 0;
   }
 }

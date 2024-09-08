@@ -500,8 +500,15 @@ Non home page that is active
         }
     }
     .page .card.static-hover,
-    .page .card:not(static-hover):hover{
-        transform: initial;
+    .page .card:not(static-hover):not(.pressed):hover{
+        transform: none;
+        cursor: pointer;
+        .line{
+            opacity:0;
+        }
+    }
+    .page .card.pressed:not(static-hover):hover{
+        transform: translate(4px,4px);
         cursor: pointer;
         .line{
             opacity:0;
