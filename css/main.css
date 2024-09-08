@@ -475,6 +475,14 @@ Non home page that is active
   .page .card.pressed:not(static-hover):hover .line {
     opacity: 0;
   }
+  .card div.title-container:after {
+    top: 10px;
+    right: -13px;
+    transition: transform 0.25s ease-out;
+  }
+  .card::before {
+    top: 4px;
+  }
 }
 @media screen and (max-width: 696px) {
   .page:not([data-page-target=home]) .inner-container,
@@ -492,6 +500,11 @@ Non home page that is active
   .card .footer .content.read-more {
     left: 68px;
     transform: translateY(-10px);
+  }
+  .card div.title-container:after {
+    top: 10px;
+    right: -13px;
+    transition: transform 0.25s ease-out;
   }
 }
 @media screen and (max-width: 480px) {

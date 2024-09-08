@@ -378,7 +378,6 @@ body{
     top: 10px;
     right: -14px;
     z-index: 30;
-    // background-color:red;
     background-color:var(--background-color);
     transform:translateX(0px);
     transition: transform 0.15s ease-out;
@@ -528,6 +527,14 @@ Non home page that is active
             opacity:0;
         }
     }
+    .card div.title-container:after{
+        top: 10px;
+        right: -13px;
+        transition: transform 0.25s ease-out;
+    }
+    .card::before{
+        top:4px;
+    }
 }
 
 
@@ -547,6 +554,11 @@ Non home page that is active
     .card .footer .content.read-more{
         left:68px;
         transform: translateY(-10px);
+    }
+    .card div.title-container:after{
+        top: 10px;
+        right: -13px;
+        transition: transform 0.25s ease-out;
     }
 }
 
