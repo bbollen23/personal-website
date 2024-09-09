@@ -47,6 +47,11 @@ body{
 
 // Transition delays
 
+.no-transition{
+    transition: none !important;
+    animation: none !important;
+}
+
 .delay-1{
     transition-delay:$transition-delay-1 !important;
 }

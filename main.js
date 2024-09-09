@@ -26,7 +26,11 @@ function copy(copyString) {
 	}, 1500); // 3000 milliseconds = 3 seconds
 }
 
+// let userNavigatedWithSwipe = false;
+// let swipeDetected = false;
+
 function showPage() {
+
 	// Get the hash from the URL
 	var hash = window.location.hash.substring(1) || 'home';
 	var pages = document.querySelectorAll('.page');
@@ -49,32 +53,44 @@ function showPage() {
 	// Remove all delays
 	const delays = ['delay-1','delay-2','delay-3']
 	pages.forEach(page => {
+		page.classList.remove('no-transition')
 		delays.forEach(delay => {
 			page.classList.remove(delay);
 		})
 	})
+	mobileHeader.classList.remove('no-transition')
 	delays.forEach(delay => {
 		mobileHeader.classList.remove(delay);
 	})
 
-	if(activePage && activePage.getAttribute('data-page-target') !== 'home' && hash === 'home'){
-		if(activePage){
-			activePage.classList.add('delay-1');
-			mobileHeader.classList.add('delay-1')
-			home.classList.add('delay-2')
+
+	if(!bScrolled){
+
+		if(activePage && activePage.getAttribute('data-page-target') !== 'home' && hash === 'home'){
+			if(activePage){
+				activePage.classList.add('delay-1');
+				mobileHeader.classList.add('delay-1')
+				home.classList.add('delay-2')
+			}
+		} 
+		else if (activePage && activePage.getAttribute('data-page-target') === 'home') {
+			if(activePage){
+				home.classList.add('delay-1')
+				selectedPage.classList.add('delay-2');
+				mobileHeader.classList.add('delay-2');
+			}
+		} else if (activePage && activePage.getAttribute('data-page-target') !== 'home' && hash !== 'home') {
+			if(activePage){
+				activePage.classList.add('delay-1');
+				selectedPage.classList.add('delay-3')
+			}
 		}
-	} 
-	else if (activePage && activePage.getAttribute('data-page-target') === 'home') {
-		if(activePage){
-			home.classList.add('delay-1')
-			selectedPage.classList.add('delay-2');
-			mobileHeader.classList.add('delay-2');
-		}
-	} else if (activePage && activePage.getAttribute('data-page-target') !== 'home' && hash !== 'home') {
-		if(activePage){
-			activePage.classList.add('delay-1');
-			selectedPage.classList.add('delay-3')
-		}
+	} else {
+		pages.forEach(page => {
+			page.classList.add('no-transition')
+		})
+		mobileHeader.classList.add('no-transition')
+		bScrolled = false;
 	}
 
 	// // Hide all pages
@@ -230,9 +246,32 @@ function applyUserPreference() {
 
 applyUserPreference();
 
-window.addEventListener('pageshow', function(event) {
-    if (event.persisted) {
-        // Reload the page when it is restored from bfcache
-        window.location.reload();
-    }
+
+// boolean that stores if a swipe has been performed.
+var bScrolled = false;
+// countdown in ms before resetting the boolean.
+var iTime = 1000;
+var oTimeout;
+window.addEventListener('mousewheel', function(e) {
+	if (e.wheelDeltaY === 0) {
+	// there is an horizontal scroll
+		if (!bScrolled) {
+		// no need to set bScrolled to true if it has been done within the iTime time. 
+		bScrolled = true;
+		oTimeout = setTimeout(function(){
+			bScrolled = false;
+		}, iTime);
+		}
+	}
 });
+
+window.onpopstate = function() {
+	// clear the timeout to be sure we keep the correct value for bScrolled
+	clearTimeout(oTimeout);
+	// check if there has been a swipe prior to the change of history state
+	if (bScrolled) {
+		// check which browser & OS the user is using, then
+		// trigger your awesome custom transition.
+		console.log('we b scrolled')
+	}
+}
