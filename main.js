@@ -35,6 +35,9 @@ function showPage() {
 	var hash = window.location.hash.substring(1) || 'home';
 	var pages = document.querySelectorAll('.page');
 	var cards = document.querySelectorAll('.card-wrapper');
+	var insideCards = document.querySelectorAll('.card');
+	var cardContainers = document.querySelectorAll('.card-container');
+	var cardShadows = document.querySelectorAll('.card-shadow');
 	var buttons = document.querySelectorAll('.nav-button');
 
 	// Add transition delays
@@ -90,6 +93,19 @@ function showPage() {
 			page.classList.add('no-transition')
 		})
 		mobileHeader.classList.add('no-transition')
+
+		cards.forEach(card => {
+			card.classList.add('no-transition')
+		})
+		cardContainers.forEach(container => {
+			container.classList.add('no-transition')
+		})
+		cardShadows.forEach(shadow => {
+			shadow.classList.add('no-transition')
+		})
+		insideCards.forEach(insideCard => {
+			insideCard.classList.add('no-transition')
+		})
 		bScrolled = false;
 	}
 
