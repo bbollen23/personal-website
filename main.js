@@ -30,7 +30,7 @@ function showPage() {
 	// Get the hash from the URL
 	var hash = window.location.hash.substring(1) || 'home';
 	var pages = document.querySelectorAll('.page');
-	var cards = document.querySelectorAll('.card');
+	var cards = document.querySelectorAll('.card-wrapper');
 	var buttons = document.querySelectorAll('.nav-button');
 
 	// Add transition delays
@@ -42,7 +42,7 @@ function showPage() {
 	var mobileHeader = document.querySelector('.mobile-header');
 	var home = document.querySelector('[data-page-target="home"]');
     var selectedPage = document.querySelector(`.page[data-page-target="${hash}"]`);
-	var cardClicked = document.querySelector(`.card[data-page-target="${hash}"]`);
+	var cardClicked = document.querySelector(`.card-wrapper[data-page-target="${hash}"]`);
 	var buttonClicked = document.querySelector(`.button[data-page-target="${hash}"]`)
 
 
@@ -99,17 +99,15 @@ function showPage() {
 		}
 		if(buttonClicked){
 			buttonClicked.classList.add('clicked')
-			console.log('added')
 		}
     }
 }
 
 
 function navigateTo(pageId) {
-	console.log(pageId);
 	// Set the hash in the URL
     var selectedPage = document.querySelector(`.page[data-page-target="${pageId}"]`);
-	var cardClicked = document.querySelector(`.card[data-page-target="${pageId}"]`);
+	var cardClicked = document.querySelector(`.card-wrapper[data-page-target="${pageId}"]`);
 
 	if(selectedPage.classList.contains('active')){
 		window.location.hash = "home"
@@ -148,7 +146,7 @@ toggleGroup.addEventListener("click", () => {
 });
 
 const buttons = document.querySelectorAll(".nav-button");
-const cards = document.querySelectorAll('.card')
+const cards = document.querySelectorAll('.card-wrapper')
 
 // Loop through each button and attach the event listener
 buttons.forEach(button => {
@@ -173,6 +171,16 @@ buttons.forEach(button => {
 });
 
 cards.forEach(card => {
+	card.addEventListener("mousedown", () => {
+		console.log('clicked!!')
+		card.classList.add('pressed')
+	});
+	card.addEventListener("mouseup", () => {
+		card.classList.remove('pressed')
+	});
+	card.addEventListener("mouseleave", () => {
+		card.classList.remove('pressed')
+	});
 	card.addEventListener("touchstart", () => {
 		card.classList.add('pressed')
 	});
