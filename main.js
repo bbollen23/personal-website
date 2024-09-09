@@ -229,3 +229,10 @@ function applyUserPreference() {
 }
 
 applyUserPreference();
+
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        // Reload the page when it is restored from bfcache
+        window.location.reload();
+    }
+});
