@@ -247,11 +247,26 @@ function applyUserPreference() {
 applyUserPreference();
 
 
-// boolean that stores if a swipe has been performed.
+
+
+// Boolean that stores if a swipe has been performed.
 var bScrolled = false;
-// countdown in ms before resetting the boolean.
+// Countdown in ms before resetting the boolean.
 var iTime = 1000;
 var oTimeout;
+var startX, startY, endX, endY;
+
+
+function handleSwipe() {
+    if (!bScrolled) {
+        // No need to set bScrolled to true if it has been done within the iTime time.
+        bScrolled = true;
+        oTimeout = setTimeout(function(){
+            bScrolled = false;
+        }, iTime);
+    }
+}
+
 window.addEventListener('mousewheel', function(e) {
 	if (e.wheelDeltaY === 0) {
 	// there is an horizontal scroll
@@ -264,6 +279,27 @@ window.addEventListener('mousewheel', function(e) {
 		}
 	}
 });
+
+// Detect touch events on iOS
+window.addEventListener('touchstart', function(e) {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+}, false);
+
+window.addEventListener('touchend', function(e) {
+    endX = e.changedTouches[0].clientX;
+    endY = e.changedTouches[0].clientY;
+    var deltaX = endX - startX;
+    var deltaY = endY - startY;
+    var absDeltaX = Math.abs(deltaX);
+    var absDeltaY = Math.abs(deltaY);
+
+    // Check if swipe was horizontal
+    if (absDeltaY < absDeltaX && absDeltaX > 30) { // Threshold to avoid small movements
+        handleSwipe();
+    }
+}, false);
+
 
 window.onpopstate = function() {
 	// clear the timeout to be sure we keep the correct value for bScrolled
