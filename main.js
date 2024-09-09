@@ -255,25 +255,28 @@ var bScrolled = false;
 var iTime = 1000;
 var oTimeout;
 var startX, startY, endX, endY;
+var xThreshold = 2;
+var yThreshold = 2;
 
 
 function handleSwipe() {
-    if (!bScrolled) {
-        // No need to set bScrolled to true if it has been done within the iTime time.
-        bScrolled = true;
-        oTimeout = setTimeout(function(){
-            bScrolled = false;
-        }, iTime);
-    }
+	if (!bScrolled) {
+		// no need to set bScrolled to true if it has been done within the iTime time. 
+		bScrolled = true;
+		oTimeout = setTimeout(function(){
+			bScrolled = false;
+		}, iTime);
+	}
 }
 
-// Detect horizontal scroll on desktop
 window.addEventListener('mousewheel', function(e) {
-    if (e.wheelDeltaY === 0) {
-        // Horizontal scroll detected
-        var direction = e.deltaX > 0 ? 'right' : 'left';
-        handleSwipe(direction);
-    }
+	console.log("X Change: " + e.wheelDeltaX);
+	console.log("Y Change: " + e.wheelDeltaY);
+	let xChange = Math.abs(e.wheelDeltaX);
+	let yChange = Math.abs(e.wheelDeltaY);
+	if (yChange <= xChange && xChange > xThreshold) {
+		handleSwipe();
+	}
 });
 
 // Detect touch events on iOS
@@ -291,9 +294,8 @@ window.addEventListener('touchend', function(e) {
     var absDeltaY = Math.abs(deltaY);
 
     // Check if swipe was horizontal
-    if (absDeltaY < absDeltaX && absDeltaX > threshold) {
-        var direction = deltaX > 0 ? 'right' : 'left';
-        handleSwipe(direction);
+    if (absDeltaY < absDeltaX && absDeltaX > xThreshold) { // Threshold to avoid small movements
+        handleSwipe();
     }
 }, false);
 
