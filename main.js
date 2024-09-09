@@ -267,17 +267,13 @@ function handleSwipe() {
     }
 }
 
+// Detect horizontal scroll on desktop
 window.addEventListener('mousewheel', function(e) {
-	if (e.wheelDeltaY === 0) {
-	// there is an horizontal scroll
-		if (!bScrolled) {
-		// no need to set bScrolled to true if it has been done within the iTime time. 
-		bScrolled = true;
-		oTimeout = setTimeout(function(){
-			bScrolled = false;
-		}, iTime);
-		}
-	}
+    if (e.wheelDeltaY === 0) {
+        // Horizontal scroll detected
+        var direction = e.deltaX > 0 ? 'right' : 'left';
+        handleSwipe(direction);
+    }
 });
 
 // Detect touch events on iOS
@@ -295,8 +291,9 @@ window.addEventListener('touchend', function(e) {
     var absDeltaY = Math.abs(deltaY);
 
     // Check if swipe was horizontal
-    if (absDeltaY < absDeltaX && absDeltaX > 30) { // Threshold to avoid small movements
-        handleSwipe();
+    if (absDeltaY < absDeltaX && absDeltaX > threshold) {
+        var direction = deltaX > 0 ? 'right' : 'left';
+        handleSwipe(direction);
     }
 }, false);
 
