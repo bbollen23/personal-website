@@ -477,7 +477,7 @@ Non home page that is active
   .page .card-container .card-wrapper.static-hover .line, .page .card-container .card-wrapper:not(.static-hover):not(.pressed):hover .line {
     opacity: 0;
   }
-  .page .card-container .card-wrapper:not(.static-hover):hover ~ .card-shadow {
+  .page .card-container .card-wrapper.static-hover ~ .card-shadow, .page .card-container .card-wrapper:not(.static-hover):hover ~ .card-shadow {
     transform: translate(5px, 5px);
   }
   .page .card-container .card-wrapper.pressed:not(.static-hover):hover {

@@ -532,6 +532,7 @@ Non home page that is active
                         opacity:0;
                     }
                 }
+                &.static-hover ~ .card-shadow,
                 &:not(.static-hover):hover ~ .card-shadow{
                     transform: translate(5px, 5px);
                 }
