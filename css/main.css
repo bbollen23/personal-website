@@ -4,6 +4,7 @@
   --off-background-color: #FEECB3;
   --card-border-color: black;
   --card-background-color:#FEECB3;
+  --card-shadow-color: rgba(95, 94, 94, 0.4);
 }
 
 .dark-mode {
@@ -12,6 +13,7 @@
   --off-background-color: #000000;
   --card-border-color: #000000;
   --card-background-color:#292929;
+  --card-shadow-color: rgba(25, 25, 25, 0.5);
 }
 
 *,
@@ -265,9 +267,8 @@ body {
   position: relative;
 }
 .card-container .card-shadow {
-  background-color: red;
-  background-color: var(--card-border-color);
-  transform: translate(5px, 5px);
+  background-color: var(--card-shadow-color);
+  transform: translate(5px, 8px);
   transition: 0.25s ease-out;
   position: absolute;
   width: 100%;
@@ -291,14 +292,14 @@ body {
   animation: growLine 0.5s ease-out forwards;
 }
 .card-container .card-wrapper:not(.static-hover):hover ~ .card-shadow {
-  transform: translate(25px, 0px);
+  transform: translate(5px, 8px) translate(20px, -5px);
 }
 .card-container .card-wrapper.static-hover {
   transform: translate(20px, -5px);
   cursor: pointer;
 }
 .card-container .card-wrapper.static-hover ~ .card-shadow {
-  transform: translate(25px, 0px);
+  transform: translate(5px, 8px) translate(20px, -5px);
 }
 .card-container .card-wrapper.static-hover .line {
   animation: growLine 0.5s ease-out forwards;
@@ -310,14 +311,14 @@ body {
   transform: translateY(-10px);
 }
 .card-container .card-wrapper.pressed {
-  transform: translate(4px, 4px);
+  transform: translate(5px, 8px);
   transition-duration: 0s;
 }
 .card-container .card-wrapper.pressed.static-hover {
-  transform: translate(24px, -1px);
+  transform: translate(5px, 8px) translate(20px, -5px);
 }
 .card-container .card-wrapper.pressed:hover {
-  transform: translate(24px, -1px);
+  transform: translate(5px, 8px) translate(20px, -5px);
 }
 
 .card {

@@ -6,6 +6,7 @@
     --off-background-color: #{$off-background-color-light};
     --card-border-color: #{$card-border-color-light};
     --card-background-color:#{$card-background-color-light};
+    --card-shadow-color: #{$card-shadow-color-light};
 
 }
 
@@ -15,6 +16,7 @@
     --off-background-color: #{$off-background-color-dark};
     --card-border-color: #{$card-border-color-dark};
     --card-background-color:#{$card-background-color-dark};
+    --card-shadow-color: #{$card-shadow-color-dark};
 
 }
 *,
@@ -282,9 +284,8 @@ body{
 .card-container{
     position:relative;
     .card-shadow{
-        background-color:red;
-        background-color:var(--card-border-color);
-        transform: translate(5px,5px);
+        background-color:var(--card-shadow-color);
+        transform: translate($card-clicked-move-x, $card-clicked-move-y);
         transition:0.25s ease-out;
         position:absolute;
         width:100%;
@@ -302,20 +303,20 @@ body{
         transition:0.25s ease-out;
         clip-path: polygon(calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%, 0 0);
         &:not(.static-hover):hover{
-            transform: translate(20px, -5px);
+            transform: translate($card-hover-move-x, $card-hover-move-y);
             cursor: pointer;
             .line{
                 animation: growLine 0.5s ease-out forwards;
             }
             & ~ .card-shadow{
-                transform: translate(25px, 0px);
+                transform: translate($card-clicked-move-x, $card-clicked-move-y) translate($card-hover-move-x, $card-hover-move-y);
             }
         }
         &.static-hover{
             & ~ .card-shadow{
-                transform: translate(25px, 0px);
+                transform: translate($card-clicked-move-x, $card-clicked-move-y) translate($card-hover-move-x, $card-hover-move-y);
             }
-            transform: translate(20px, -5px);
+            transform: translate($card-hover-move-x, $card-hover-move-y);
             cursor: pointer;
             .line{
                 animation: growLine 0.5s ease-out forwards;
@@ -332,13 +333,13 @@ body{
             }
         }
         &.pressed{
-            transform:translate(4px,4px);
+            transform: translate($card-clicked-move-x, $card-clicked-move-y);
             transition-duration: 0s;
             &.static-hover{
-                transform: translate(24px,-1px);
+                transform: translate($card-clicked-move-x, $card-clicked-move-y) translate($card-hover-move-x, $card-hover-move-y);
             }
             &:hover{
-                transform: translate(24px,-1px);
+                transform: translate($card-clicked-move-x, $card-clicked-move-y) translate($card-hover-move-x, $card-hover-move-y);
             }
         }
     }
