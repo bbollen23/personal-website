@@ -135,13 +135,19 @@ function showPage() {
     }
 }
 
+function openMenu(){
+	var menu = document.querySelector('.mobile-menu')
+	menu.classList.toggle('opened')
+}
 
-function navigateTo(pageId) {
+function navigateTo(pageId, mobile=false) {
 	// Set the hash in the URL
     var selectedPage = document.querySelector(`.page[data-page-target="${pageId}"]`);
 	var cardClicked = document.querySelector(`.card-wrapper[data-page-target="${pageId}"]`);
 
-	if(selectedPage.classList.contains('active')){
+	var mobileMenu = document.querySelector('.mobile-menu')
+	mobileMenu.classList.remove('opened');
+	if(selectedPage.classList.contains('active') && mobile===false){
 		window.location.hash = "home"
 		cardClicked.classList.remove('static-hover')
 	} else {

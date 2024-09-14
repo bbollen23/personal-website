@@ -5,6 +5,8 @@
   --card-border-color: black;
   --card-background-color:#FEECB3;
   --card-shadow-color: rgba(95, 94, 94, 0.4);
+  --header-color: #fff9f1;
+  --hover-color: #ebedf0;
 }
 
 .dark-mode {
@@ -14,6 +16,8 @@
   --card-border-color: #000000;
   --card-background-color:#292929;
   --card-shadow-color: rgba(25, 25, 25, 0.5);
+  --header-color: #323232;
+  --hover-color: #444950;
 }
 
 *,
@@ -63,16 +67,66 @@ body {
 
 .header {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 20px;
   z-index: 20;
-  position: relative;
+  position: fixed;
+  width: 100%;
   right: 0px;
+  background-color: var(--header-color);
+  border-bottom: 1px solid var(--card-border-color);
+}
+.header .header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 1440px;
+}
+.header .menu-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.header .menu-container img {
+  width: 40px;
+  height: auto;
+}
+.header .menu-container .menu-item {
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-family: "Roboto", sans-serif;
+  transform: translateY(0px);
+  transition: 0.1s ease-out;
+  cursor: pointer;
+}
+.header .menu-container .menu-item div:not(.line) {
+  margin-bottom: 5px;
+}
+.header .menu-container .menu-item:hover {
+  transform: translateY(-2px);
+}
+.header .menu-container .menu-item:hover .line {
+  animation: growLine 0.25s ease-out forwards;
+}
+.header .menu-container .name {
+  font-size: 2.1rem;
+  margin-right: 30px;
+}
+
+.mobile {
+  display: none;
+}
+
+.mobile-menu {
+  z-index: 20;
+  display: none;
 }
 
 .mobile-header {
-  display: flex;
+  display: none;
   flex-direction: column;
   transform: translateY(-1000px);
   transition: transform 0.5s ease-in;
@@ -106,7 +160,7 @@ body {
   height: 90vh;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
 .page {
@@ -148,7 +202,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 0px 40px;
+  margin: 40px;
   width: 600px;
 }
 
@@ -189,7 +243,7 @@ body {
   width: 100px;
   z-index: 1;
   transition: transform 0.2s ease-in-out;
-  font-size: 0.7em;
+  font-size: 0.7rem;
   text-align: center;
   height: 25px;
   justify-content: center;
@@ -204,7 +258,7 @@ body {
   transform: translateX(40px);
 }
 .button-group .button.big-font {
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 .icons {
@@ -218,6 +272,7 @@ body {
   flex-direction: row;
 }
 .icons .additional-icon-wrapper .copy-button {
+  transform: translateY(-4px);
   cursor: pointer;
   font-size: 15px;
   margin-left: 5px;
@@ -227,25 +282,28 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border-radius: 50%;
+  padding: 10px;
+  transition: 0.25s ease-out;
 }
 .icons .icon-container .content {
   display: flex;
   flex-direction: row;
-  transition: 0.25s ease-out;
 }
 .icons .icon-container .content a {
   color: var(--text-color);
   text-decoration: none; /* Removes the underline */
 }
 .icons .icon-container .content i {
-  font-size: 20px;
-  margin-right: 2px;
+  font-size: 30px;
 }
 .icons .icon-container .line {
   height: 2px;
 }
 
-.icons .icon-container:hover .content {
+.icons .icon-container:hover {
+  background-color: var(--hover-color);
   transform: translateY(-3px);
 }
 .icons .icon-container:hover .line {
@@ -253,11 +311,11 @@ body {
 }
 
 .icons .additional-icon-wrapper .copy-button:hover {
-  transform: translateY(-4px);
+  transform: translateY(-8px);
 }
 
 .name {
-  font-size: 3em;
+  font-size: 3rem;
   font-weight: bold;
   text-align: left;
 }
@@ -335,7 +393,7 @@ body {
   width: auto;
 }
 .card .title-container .title {
-  font-size: 2em;
+  font-size: 2rem;
   width: auto;
   padding-bottom: 5px;
   font-family: "Roboto Condensed", sans-serif;
@@ -453,10 +511,79 @@ Non home page that is active
   .page:not([data-page-target=home]) .name {
     margin-bottom: 68px;
   }
+  .header .header-container {
+    width: 1024px;
+  }
+  .header .menu-container .name {
+    font-size: 1.8rem;
+  }
+  .header .menu-container .menu-item {
+    font-size: 1.1rem;
+  }
+  .header .icons .icon-container .content i {
+    font-size: 25px;
+  }
 }
 @media screen and (max-width: 1024px) {
-  .page:not([data-page-target=home]) {
-    top: 200px;
+  .header .header-container {
+    width: 696px;
+  }
+  .header .menu-item {
+    display: none;
+  }
+  .header .icons {
+    display: none;
+    gap: 5px;
+  }
+  .header .icons .icon-container {
+    padding: 5px;
+  }
+  .header .icons .icon-container .content i {
+    font-size: 20px;
+  }
+  .mobile {
+    display: flex;
+  }
+  .mobile i {
+    font-size: 30px;
+  }
+  .mobile-menu {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 74px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .mobile-menu div {
+    font-size: 1.3rem;
+  }
+  .mobile-menu.opened {
+    display: flex;
+  }
+  .mobile-menu .mobile-menu-container {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--card-background-color);
+    gap: 80px;
+    width: 100%;
+    height: 80%;
+  }
+  .mobile-menu .mobile-menu-container .name {
+    font-size: 2rem;
+  }
+  .mobile-menu .mobile-menu-container .nav-links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    font-size: 1.1rem;
+  }
+  .mobile-menu .mobile-menu-container .icons {
+    display: flex;
   }
   .page.active:not([data-page-target=home]) {
     transform: translateX(0px);
@@ -496,6 +623,9 @@ Non home page that is active
     margin-right: 0px;
     width: 400px;
   }
+  .mobile-menu .mobile-menu-container {
+    width: 480px;
+  }
   body {
     font-size: 10pt;
   }
@@ -529,23 +659,26 @@ Non home page that is active
 @media screen and (max-width: 480px) {
   [data-page-target=home].page .inner-container,
   .page:not([data-page-target=home]) .inner-container,
-  .mobile-header {
-    width: 330px;
-    margin-left: 30px;
-  }
   .card {
-    font-size: 0.8em;
+    font-size: 0.8rem;
   }
   .name {
     font-size: 2.5rem;
     font-family: "Roboto Condensed", sans-serif;
   }
-  .mobile-header .button-group {
-    justify-content: flex-start;
-    gap: 15px;
+  .mobile-menu .mobile-menu-container {
+    width: 426px;
   }
-  .mobile-header .button-group .button {
-    width: 70px;
+}
+@media screen and (max-width: 426px) {
+  .mobile {
+    display: flex;
+  }
+  .mobile i {
+    font-size: 22px;
+  }
+  .mobile-menu .mobile-menu-container {
+    width: 395px;
   }
 }
 @media screen and (max-width: 395px) {
@@ -554,12 +687,18 @@ Non home page that is active
   .mobile-header {
     width: 280px;
   }
+  .mobile-menu .mobile-menu-container {
+    width: 100%;
+    box-sizing: border-box;
+  }
   .card {
-    font-size: 0.8em;
+    font-size: 0.8rem;
   }
   .name {
     font-size: 1.5rem;
-    font-family: "Roboto Condensed", sans-serif;
+  }
+  .header .menu-container .name {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 320px) {
@@ -567,9 +706,6 @@ Non home page that is active
   .page:not([data-page-target=home]) .inner-container,
   .mobile-header {
     width: 220px;
-  }
-  .page.page:not([data-page-target=home]) {
-    top: 230px;
   }
 }
 

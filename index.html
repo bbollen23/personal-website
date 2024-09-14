@@ -18,30 +18,51 @@
   </head>
   <body>
     <div class="header">
-      <div class="button-group">
-        <div class="button-container" id="dark-mode-toggle-group">
-          <div id="dark-mode-toggle" class="toggle button big-font">
-            <i class="fas fa-sun"></i>
-          </div>
-          <div class="toggle-brick"></div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div id="notification">Copied!</div>
-
-      <div data-page-target="home" class="page">
-        <div class="inner-container">
+      <div class="header-container">
+        <div class="menu-container">
           <div class="name">Brian Bollen, Ph.D.</div>
+          <!-- <img src="tetrahedon-2.svg"/> -->
+          <div class="menu-item">
+            <div onclick="navigateTo('projects')">Projects</div>
+            <div class="line"></div>
+          </div>
+          <div class="menu-item">
+            <div onclick="navigateTo('research')">Research</div>
+            <div class="line"></div>
+          </div>
+          <div class="menu-item">
+            <div onclick="navigateTo('about')">About</div>
+            <div class="line"></div>
+          </div>
+          <div class="menu-item">
+            <div onclick="navigateTo('contact')">Contact</div>
+            <div class="line"></div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <!-- <div class="button-container" id="dark-mode-toggle-group">
+            <div id="dark-mode-toggle" class="toggle button big-font">
+              <i class="fas fa-sun"></i>
+            </div>
+            <div class="toggle-brick"></div>
+          </div> -->
           <div class="icons">
+            <div class="icon-container" id="dark-mode-toggle-group">
+              <div class="content" >
+                <div id="dark-mode-toggle">
+                  <i class="fas fa-sun"></i>
+                  <span></span>
+                </div>
+              </div>
+            </div>
             <div class="icon-container">
               <div class="content">
                 <a target="_blank" href="https://github.com/bbollen23">
                   <i class="fab fa-github"></i>
-                  <span>bbollen23</span>
+                  <span></span>
                 </a>
               </div>
-              <div class="line"></div>
             </div>
             <div class="icon-container">
               <div class="content">
@@ -50,20 +71,18 @@
                   href="https://www.linkedin.com/in/brian-bollen-ph-d-a3123484"
                 >
                   <i class="fab fa-linkedin"></i>
-                  <span>Brian Bollen, Ph.D.</span>
+                  <span><span>
                 </a>
               </div>
-              <div class="line"></div>
             </div>
             <div class="additional-icon-wrapper">
               <div class="icon-container">
                 <div class="content">
                   <a href="mailto:briancbollen@gmail.com">
                     <i class="fas fa-envelope"></i>
-                    <span>briancbollen@gmail.com</span>
+                    <span></span>
                   </a>
                 </div>
-                <div class="line"></div>
               </div>
               <i
                 class="fas fa-copy copy-button"
@@ -71,6 +90,17 @@
               ></i>
             </div>
           </div>
+          <div class="mobile" onclick="openMenu()">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="notification">Copied!</div>
+
+      <div data-page-target="home" class="page">
+        <div class="inner-container">
           <div class="card-container">
             <div class="card-wrapper" data-page-target="projects">
               <div class="card" onclick="navigateTo('projects')">
@@ -140,6 +170,37 @@
               <div class="card" onclick="navigateTo('about')">
                 <div class="title-container">
                   <div class="title">About</div>
+                  <div class="line"></div>
+                </div>
+                <p>
+                  I am currently a Senior Software Engineer at the Scientific
+                  Computing and Imaging institute at the University of Utah in
+                  the Visualization Design Lab. I received my Ph.D. in Applied
+                  Mathematics at the University of Arizona.
+                </p>
+                <div class="footer">
+                  <div class="read-more content">
+                    <div>Read More</div>
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                  <div class="read-less content">
+                    <i class="fas fa-arrow-left"></i>
+                    <div>Read Less</div>
+                  </div>
+                </div>
+                <div class="mobile-footer">
+                  <div>Read More</div>
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-shadow"></div>
+          </div>
+          <div class="card-container">
+            <div class="card-wrapper" data-page-target="contact">
+              <div class="card" onclick="navigateTo('contact')">
+                <div class="title-container">
+                  <div class="title">Contact</div>
                   <div class="line"></div>
                 </div>
                 <p>
@@ -317,6 +378,82 @@
             maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
             orci. Vestibulum nec nisi quis massa ultrices consequat.
           </p>
+        </div>
+      </div>
+      <div data-page-target="contact" class="page">
+        <div class="inner-container">
+          <div class="name">Contact</div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique, ligula in venenatis consequat, ipsum dolor ultricies
+            tellus, vel blandit turpis risus vel eros. In ullamcorper mattis
+            nisi quis mollis. Nulla euismod nunc sapien, eget imperdiet mi
+            maximus non. Cras eu purus mi. Aliquam erat volutpat. Nam vel odio
+            orci. Vestibulum nec nisi quis massa ultrices consequat.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu">
+      <div class="mobile-menu-container">
+        <div class="name">Brian Bollen, Ph.D.</div>
+        <div class="nav-links">
+          <div onclick="navigateTo('home', true)">Home</div>
+          <div onclick="navigateTo('projects', true)">Projects</div>
+          <div onclick="navigateTo('research', true)">Research</div>
+          <div onclick="navigateTo('about', true)">About</div>
+          <div onclick="navigateTo('contact', true)">Contact</div>  
+        </div>
+        <div class="icons">
+          <div class="icon-container">
+            <div class="content">
+              <a target="_blank" href="https://github.com/bbollen23">
+                <i class="fab fa-github"></i>
+                <span></span>
+              </a>
+            </div>
+          </div>
+          <div class="icon-container">
+            <div class="content">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/brian-bollen-ph-d-a3123484"
+              >
+                <i class="fab fa-linkedin"></i>
+                <span><span>
+              </a>
+            </div>
+          </div>
+          <div class="additional-icon-wrapper">
+            <div class="icon-container">
+              <div class="content">
+                <a href="mailto:briancbollen@gmail.com">
+                  <i class="fas fa-envelope"></i>
+                  <span></span>
+                </a>
+              </div>
+            </div>
+            <i
+              class="fas fa-copy copy-button"
+              onclick="copy('briancbollen@gmail.com')"
+            ></i>
+          </div>
         </div>
       </div>
     </div>
