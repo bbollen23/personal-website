@@ -164,24 +164,33 @@ window.addEventListener('hashchange', showPage);
 // Show the page based on the current hash
 window.addEventListener('load', showPage);
 
-const toggleButton = document.getElementById("dark-mode-toggle");
-const toggleGroup = document.getElementById("dark-mode-toggle-group");
+const toggleButton = document.querySelectorAll(".dark-mode-toggle");
+const toggleGroup = document.querySelectorAll(".dark-mode-toggle-group");
+console.log(toggleGroup);
 
 const htmlElement = document.documentElement;
 
 // Add an event listener to the button
-toggleGroup.addEventListener("click", () => {
-  // Toggle the 'dark-mode' class on the body
-  htmlElement.classList.toggle("dark-mode");
+toggleGroup.forEach(group => {
+	group.addEventListener("click", () => {
+		// Toggle the 'dark-mode' class on the body
+		htmlElement.classList.toggle("dark-mode");
+	  
+		if(htmlElement.classList.contains('dark-mode')){
+		  toggleButton.forEach(item => {
+			  item.innerHTML = '<i class="fas fa-moon"></i>';
+		  })
+		} else{
+		  toggleButton.forEach(item => {
+			  item.innerHTML = '<i class="fas fa-sun"></i>';
+		  })
+	  }
+		  toggleButton.forEach(item=>{
+			  item.classList.toggle('switched')
+		  })
+	  });
+})
 
-  if(htmlElement.classList.contains('dark-mode')){
-    toggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
-  } else{
-    toggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
-	}
-  toggleButton.classList.toggle('switched')
-
-});
 
 const buttons = document.querySelectorAll(".nav-button");
 const cards = document.querySelectorAll('.card-wrapper')
@@ -257,12 +266,16 @@ function applyUserPreference() {
   
 	if (prefersDarkScheme) {
 	  htmlElement.classList.add("dark-mode");
-	  toggleButton.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
-		toggleButton.classList.add('switched')
+
+	  toggleButton.forEach(button => {
+		button.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
+		button.classList.add('switched')
+	  })
 	} else {
 	  htmlElement.classList.remove("dark-mode");
-	  toggleButton.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
-
+	  toggleButton.forEach(button => {
+		button.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
+	  })
 	}
 }
 

@@ -548,13 +548,13 @@ Non home page that is active
 
 @media screen and (max-width:1440px){
     [data-page-target="home"].page .inner-container{
-        width:400px;
+        width:600px;
     }
     [data-page-target="home"].page:not(.active){
         transform:translateX(calc((28vw)*(-1)));
     }
     .page.active:not([data-page-target="home"]){
-        transform:translateX(200px)
+        transform:translateX(300px)
     }
     .icons{
         flex-wrap: wrap;
@@ -582,11 +582,19 @@ Non home page that is active
     }
 }
 
-
+// Starts Mobile
 @media screen and (max-width:1024px){
+
+    .container{
+        justify-content: flex-start;
+        padding-left:20px;
+    }
     .header{
+        justify-content: flex-start;
         .header-container{
-            width:696px;
+            width:500px;
+            justify-content: flex-start;
+            gap:10px;
         }
         .menu-item{
             display:none;
@@ -614,49 +622,91 @@ Non home page that is active
     .mobile-menu{
         position: absolute;
         width:100vw;
-        height:calc(100vh - 74px);
-        top:74px;
-        justify-content: center;
+        height:100vh;
+        top:0px;
+        justify-content: flex-start;
         align-items: center;
         background-color:rgba(0,0,0,0.3);
+        display:flex;
+        transform: translateX(-100%);
+        // transition: 0.2s ease-in;
         div{
-            font-size:1.3rem;
+            font-size:1.0rem;
         }
         &.opened{
-            display:flex;
+            transform: translateX(0px);
+            .mobile-menu-container{
+                transform: translateX(0px);
+            }
         }
         .mobile-menu-container{
-            // border:1px solid black;
-            justify-content: center;
-            align-items: center;
+            transform: translateX(-80%);
+            transition:0.2s ease-in;
+            // align-items: center;
             display: flex;
             flex-direction:column;
             background-color:var(--background-color);
-            gap:80px;
-            width: 100%;
+            width: 500px;
             height:100%;
-            .name{
-                font-size:2.0rem;
+            .mobile-menu-header{
+                .mobile-menu-name-container{
+                    display:flex;
+                    flex-direction: row;
+                    gap:10px;
+                }
+                .name{
+                    font-size:1.6rem;
+                }
+                display:flex;
+                flex-direction:row;
+                justify-content: space-between;    
+                align-items: center;
+                i{
+                    font-size:30px;
+                }
+                padding:21.5px 10px 21.5px 10px;
+                border-bottom:1px solid black;
             }
             .nav-links{
                 display: flex;
+                margin-top:30px;
                 flex-direction: column;
-                text-align: center;
-                gap:30px;
+                text-align: left;
+                gap:20px;
                 font-size:1.1rem;
+                padding-left:10px;
+                padding-bottom:20px;
+                border-bottom:1px solid black;
             }
             .icons{
                 display: flex;
+                flex-direction:column;
+                gap:20px;
+                font-size:0.8rem;
+                margin-top:20px;
+                .icon-container{
+                    align-items: flex-start;
+                    padding-top: 0px;
+                    padding-bottom:0px;
+                    i{
+                        font-size:14px;
+                    }
+                }
             }
         }
     }
 
-    .page:not([data-page-target="home"]){
-        // top:200px;
+    [data-page-target="home"].page .inner-container{
+        width:calc(100% - 100px)
     }
     .page.active:not([data-page-target="home"]){
         transform:translateX(0px);
         margin-left:0px;
+        .inner-container{
+            margin-left:0px;
+            width:auto;
+            padding-right:20px;
+        }
     }
     [data-page-target="home"].page:not(.active){
         transform:translateX(calc((200vw)*(-1)));
@@ -698,6 +748,11 @@ Non home page that is active
 
 
 @media screen and (max-width:696px){
+    .header{
+        .header-container{
+            width:400px;
+        }
+    }
     .page:not([data-page-target="home"]) .inner-container,
     .mobile-header {
         margin-left:0px;
@@ -705,7 +760,7 @@ Non home page that is active
         width:400px;
     }
     .mobile-menu .mobile-menu-container{
-        width: 480px;
+        width: 400px;
     }
     body{
         font-size:10pt;
@@ -755,20 +810,44 @@ Non home page that is active
         font-size:2.5rem;
         font-family: $font-family-title;
     }
+    .header .menu-container .name{
+        font-size:1.4rem;
+    }
     .mobile-menu .mobile-menu-container{
-        width: 426px;
+        width: 340px;
+        .mobile-menu-header{
+            padding: 20px 10px 20px 10px;
+            .name{
+                font-size:1.4rem;
+            }
+            i{
+                font-size:25px;
+            }
+        } 
     }
 }
 
 @media screen and (max-width: 426px) {
     .mobile-icons{
-
         i{
             font-size:20px;
         }
     }
+
+    .header .menu-container .name{
+        font-size:1.2rem;
+    }
     .mobile-menu .mobile-menu-container{
-        width: 395px;
+        width: 320px;
+        .mobile-menu-header{
+            padding: 16.35px 10px 16.35px 10px;
+            .name{
+                font-size:1.2rem;
+            }
+            i{
+                font-size:20px;
+            }
+        } 
     }
 
 }
@@ -781,7 +860,7 @@ Non home page that is active
     }
 
     .mobile-menu .mobile-menu-container{
-        width: 100%;
+        width: 270px;
         box-sizing: border-box;
     }
     .card{
@@ -789,11 +868,6 @@ Non home page that is active
     }
     .name{
         font-size:1.5rem;
-    }
-    .header{
-        .menu-container .name{
-            font-size:1.5rem;
-        }
     }
 }
 

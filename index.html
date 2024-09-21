@@ -19,6 +19,9 @@
   <body>
     <div class="header">
       <div class="header-container">
+        <div class="mobile-icons" onclick="openMenu()">
+          <i class="fas fa-bars"></i>
+        </div>
         <div class="menu-container">
           <div class="name">Brian Bollen, Ph.D.</div>
           <!-- <img src="tetrahedon-2.svg"/> -->
@@ -41,13 +44,21 @@
         </div>
 
         <div class="button-group">
-          <!-- <div class="button-container" id="dark-mode-toggle-group">
-            <div id="dark-mode-toggle" class="toggle button big-font">
+          <!-- <div class="button-container" class="dark-mode-toggle-group">
+            <div class="dark-mode-toggle" class="toggle button big-font">
               <i class="fas fa-sun"></i>
             </div>
             <div class="toggle-brick"></div>
           </div> -->
           <div class="icons">
+            <div class="icon-container dark-mode-toggle-group">
+              <div class="content" >
+                <div class="dark-mode-toggle">
+                  <i class="fas fa-sun"></i>
+                  <span></span>
+                </div>
+              </div>
+            </div>
             <div class="icon-container">
               <div class="content">
                 <a target="_blank" href="https://github.com/bbollen23">
@@ -81,17 +92,7 @@
                 onclick="copy('briancbollen@gmail.com')"
               ></i>
             </div>
-          </div>
-          <div class="mobile-icons" onclick="openMenu()">
-            <div class="icon-container" id="dark-mode-toggle-group">
-              <div class="content" >
-                <div id="dark-mode-toggle">
-                  <i class="fas fa-sun"></i>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-            <i class="fas fa-bars"></i>
+            
           </div>
         </div>
       </div>
@@ -412,7 +413,20 @@
     </div>
     <div class="mobile-menu">
       <div class="mobile-menu-container">
-        <div class="name">Brian Bollen, Ph.D.</div>
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-name-container">
+            <div class="name">Brian Bollen, Ph.D.</div>
+            <div class="icon-container dark-mode-toggle-group">
+              <div class="content" >
+                <div class="dark-mode-toggle">
+                  <i class="fas fa-sun"></i>
+                  <span></span>
+                </div>
+              </div>
+            </div>   
+          </div>
+          <i onclick="openMenu()" class="fas fa-times"></i>
+        </div>
         <div class="nav-links">
           <div onclick="navigateTo('home', true)">Home</div>
           <div onclick="navigateTo('projects', true)">Projects</div>
@@ -425,7 +439,7 @@
             <div class="content">
               <a target="_blank" href="https://github.com/bbollen23">
                 <i class="fab fa-github"></i>
-                <span></span>
+                <span>bbollen23</span>
               </a>
             </div>
           </div>
@@ -436,7 +450,7 @@
                 href="https://www.linkedin.com/in/brian-bollen-ph-d-a3123484"
               >
                 <i class="fab fa-linkedin"></i>
-                <span><span>
+                <span>Brian Bollen, Ph.D.<span>
               </a>
             </div>
           </div>
@@ -445,7 +459,7 @@
               <div class="content">
                 <a href="mailto:briancbollen@gmail.com">
                   <i class="fas fa-envelope"></i>
-                  <span></span>
+                  <span>briancbollen@gmail.com</span>
                 </a>
               </div>
             </div>
