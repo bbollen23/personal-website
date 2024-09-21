@@ -345,3 +345,15 @@ window.onpopstate = function() {
 		console.log('we b scrolled')
 	}
 }
+
+const overlay = document.getElementById('mobile-menu-background');
+
+// Add click event listener on the overlay
+overlay.addEventListener('click', function(event) {
+  // Check if the clicked element is the overlay, not the modal
+  if (event.target === overlay) {
+	// Perform action (e.g., close the modal)
+	// overlay.style.display = 'none';  // Example to hide the modal
+	openMenu()
+  }
+});

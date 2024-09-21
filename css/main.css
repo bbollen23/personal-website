@@ -75,6 +75,7 @@ body {
   right: 0px;
   background-color: var(--header-color);
   border-bottom: 1px solid var(--card-border-color);
+  height: 80px;
 }
 .header .header-container {
   display: flex;
@@ -530,6 +531,7 @@ Non home page that is active
     padding-left: 20px;
   }
   .header {
+    height: 60px;
     justify-content: flex-start;
   }
   .header .header-container {
@@ -588,6 +590,7 @@ Non home page that is active
     height: 100%;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header {
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -598,13 +601,14 @@ Non home page that is active
   .mobile-menu .mobile-menu-container .mobile-menu-header .mobile-menu-name-container {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 15px;
+    align-items: center;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header .name {
     font-size: 1.6rem;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header i {
-    font-size: 30px;
+    font-size: 20px;
   }
   .mobile-menu .mobile-menu-container .nav-links {
     display: flex;
@@ -715,6 +719,10 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 480px) {
+  [data-page-target=home].page .inner-container {
+    margin: 0px;
+    width: calc(100% - 20px);
+  }
   [data-page-target=home].page .inner-container,
   .page:not([data-page-target=home]) .inner-container,
   .card {
@@ -724,6 +732,9 @@ Non home page that is active
     font-size: 2.5rem;
     font-family: "Roboto Condensed", sans-serif;
   }
+  .header {
+    height: 50px;
+  }
   .header .menu-container .name {
     font-size: 1.4rem;
   }
@@ -731,18 +742,22 @@ Non home page that is active
     width: 340px;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header {
+    height: 50px;
     padding: 20px 10px 20px 10px;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header .name {
     font-size: 1.4rem;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header i {
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 426px) {
   .mobile-icons i {
     font-size: 20px;
+  }
+  .container {
+    margin-top: 40px;
   }
   .header .menu-container .name {
     font-size: 1.2rem;
@@ -757,15 +772,10 @@ Non home page that is active
     font-size: 1.2rem;
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header i {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 395px) {
-  [data-page-target=home].page .inner-container,
-  .page:not([data-page-target=home]) .inner-container,
-  .mobile-header {
-    width: 280px;
-  }
   .mobile-menu .mobile-menu-container {
     width: 270px;
     box-sizing: border-box;
@@ -778,10 +788,14 @@ Non home page that is active
   }
 }
 @media screen and (max-width: 320px) {
-  [data-page-target=home].page .inner-container,
-  .page:not([data-page-target=home]) .inner-container,
-  .mobile-header {
-    width: 220px;
+  .mobile-menu .mobile-menu-container .name {
+    font-size: 1.2rem;
+  }
+  .header .menu-container .name {
+    font-size: 1rem;
+  }
+  .mobile-menu .mobile-menu-container .mobile-menu-header .name {
+    font-size: 1rem;
   }
 }
 
