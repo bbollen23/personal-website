@@ -759,6 +759,9 @@ Non home page that is active
   .container {
     margin-top: 40px;
   }
+  [data-page-target=home].page .inner-container {
+    margin-top: 20px;
+  }
   .header .menu-container .name {
     font-size: 1.2rem;
   }
