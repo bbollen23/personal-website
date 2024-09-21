@@ -178,11 +178,11 @@ toggleGroup.forEach(group => {
 	  
 		if(htmlElement.classList.contains('dark-mode')){
 		  toggleButton.forEach(item => {
-			  item.innerHTML = '<i class="fas fa-moon"></i>';
+			  item.innerHTML = '<i class="bi bi-moon"></i>';
 		  })
 		} else{
 		  toggleButton.forEach(item => {
-			  item.innerHTML = '<i class="fas fa-sun"></i>';
+			  item.innerHTML = '<i class="bi bi-sun"></i>';
 		  })
 	  }
 		  toggleButton.forEach(item=>{
@@ -268,13 +268,13 @@ function applyUserPreference() {
 	  htmlElement.classList.add("dark-mode");
 
 	  toggleButton.forEach(button => {
-		button.innerHTML = '<i class="fas fa-moon"></i>'; // Example new icon
+		button.innerHTML = '<i class="bi bi-moon"></i>'; // Example new icon
 		button.classList.add('switched')
 	  })
 	} else {
 	  htmlElement.classList.remove("dark-mode");
 	  toggleButton.forEach(button => {
-		button.innerHTML = '<i class="fas fa-sun"></i>'; // Example new icon
+		button.innerHTML = '<i class="bi bi-sun"></i>'; // Example new icon
 	  })
 	}
 }
