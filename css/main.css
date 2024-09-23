@@ -38,6 +38,14 @@ body {
   font-size: 12pt;
 }
 
+html.dark-mode img.light-mode {
+  display: none;
+}
+
+html:not(.dark-mode) img.dark-mode {
+  display: none;
+}
+
 h1 {
   margin-bottom: 0;
 }
@@ -92,7 +100,7 @@ body {
   justify-content: center;
 }
 .header .menu-container img {
-  width: 40px;
+  width: 100px;
   height: auto;
 }
 .header .menu-container .menu-item {
@@ -285,8 +293,11 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 50%;
+  justify-content: center;
   padding: 10px;
   transition: 0.25s ease-out;
+  height: 50px;
+  width: 50px;
 }
 .icons .icon-container .content {
   display: flex;
@@ -297,7 +308,7 @@ body {
   text-decoration: none; /* Removes the underline */
 }
 .icons .icon-container .content i {
-  font-size: 30px;
+  font-size: 25px;
 }
 .icons .icon-container .line {
   height: 2px;
@@ -581,6 +592,7 @@ Non home page that is active
     transform: translateX(0px);
   }
   .mobile-menu .mobile-menu-container {
+    box-shadow: 4px 0px 9px #1f1d1d;
     transform: translateX(-80%);
     transition: 0.2s ease-in;
     display: flex;
@@ -629,6 +641,8 @@ Non home page that is active
     margin-top: 20px;
   }
   .mobile-menu .mobile-menu-container .icons .icon-container {
+    width: auto;
+    height: auto;
     align-items: flex-start;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -799,6 +813,9 @@ Non home page that is active
   }
   .mobile-menu .mobile-menu-container .mobile-menu-header .name {
     font-size: 1rem;
+  }
+  .mobile-menu .mobile-menu-container .icons .icon-container span {
+    font-size: 0.8rem;
   }
 }
 
